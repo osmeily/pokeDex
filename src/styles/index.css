@@ -1,0 +1,12 @@
+/*Tailwind Config */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*Index*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
