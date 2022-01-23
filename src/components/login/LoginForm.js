@@ -15,7 +15,6 @@ const LoginForm = () => {
 
     const handleFacebook = () => {
         dispatch(actionLoginFacebook())
-        navigate("/")
     }
 
     const [login, setLogin] = useState({

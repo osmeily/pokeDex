@@ -10,7 +10,9 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 
 const [pokemon, setPokemon] = useState([])
-const [urls, setUrls] = useState([
+const [evolucion, setEvolucion] = useState([]);
+
+const urls = [
     "https://pokeapi.co/api/v2/pokemon/1",
     "https://pokeapi.co/api/v2/pokemon/2",
     "https://pokeapi.co/api/v2/pokemon/3",
@@ -36,7 +38,7 @@ const [urls, setUrls] = useState([
     "https://pokeapi.co/api/v2/pokemon/23",
     "https://pokeapi.co/api/v2/pokemon/24",
     "https://pokeapi.co/api/v2/pokemon/25",
-]);
+]
 
 const getId = (e) => {
     dispatch(actionPokemon(e.target.id))
@@ -53,7 +55,6 @@ const getPokemonName =  useSelector((searchPokemon => searchPokemon.pokemon.sear
 
     const searchedPokemon = () => {
         const url = `https://pokeapi.co/api/v2/pokemon/${getPokemonName}`
-        console.log(url);
         fetch(url)
         .then(
             resp => resp.json()
@@ -62,7 +63,6 @@ const getPokemonName =  useSelector((searchPokemon => searchPokemon.pokemon.sear
             response => {
                 const {data = [response]} = response
                 setPokemon(data);
-                console.log(data);
             }
         )
     }
@@ -86,13 +86,13 @@ useEffect(() => {
                         poke.name === getPokemonName && <div value={poke.id} id={poke.id} name="selected" key={poke.id} onClick={(e)=> getId(e)} className="w-60 cursor-pointer p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                     <img id={poke.id} className="h-40 object-cover rounded-xl mx-auto" src={poke.sprites.other.dream_world.front_default} alt=""/>
                     <div id={poke.id} className="p-2">
-                        <h2 className="font-bold text-lg mb-2 ">{poke.name}</h2>
-                        <p className="text-sm text-gray-600">N.º{poke.id}</p>
+                        <h2 id={poke.id} className="font-bold text-lg mb-2 ">{poke.name}</h2>
+                        <p id={poke.id} className="text-sm text-gray-600">N.º{poke.id}</p>
                     </div>
                     <div id={poke.id} className="m-2">
                     {
                         poke.types.map(typ => (
-                            <button key={poke.id + typ.type.name} style={{background:typeColor[typ.type.name]}} className="text-white px-3 py-1 rounded-md">{typ.type.name}
+                            <button id={poke.id} key={poke.id + typ.type.name} style={{background:typeColor[typ.type.name]}} className="text-white px-3 py-1 rounded-md">{typ.type.name}
                         </button>
                         ))
                     }
@@ -104,13 +104,13 @@ useEffect(() => {
                 <div value={poke.id} id={poke.id} name="selected" key={poke.id} onClick={(e)=> getId(e)} className="w-60 cursor-pointer p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
             <img id={poke.id} className="h-40 object-cover rounded-xl mx-auto" src={poke.sprites.other.dream_world.front_default} alt=""/>
             <div id={poke.id} className="p-2">
-                <h2 className="font-bold text-lg mb-2 ">{poke.name}</h2>
-                <p className="text-sm text-gray-600">N.º{poke.id}</p>
+                <h2 id={poke.id} className="font-bold text-lg mb-2 ">{poke.name}</h2>
+                <p id={poke.id} className="text-sm text-gray-600">N.º{poke.id}</p>
             </div>
             <div id={poke.id} className="m-2">
             {
                 poke.types.map(typ => (
-                    <button key={poke.id + typ.type.name} style={{background:typeColor[typ.type.name]}} className="text-white px-3 py-1 rounded-md">{typ.type.name}
+                    <button id={poke.id} key={poke.id + typ.type.name} style={{background:typeColor[typ.type.name]}} className="text-white px-3 py-1 rounded-md">{typ.type.name}
                 </button>
                 ))
             }
