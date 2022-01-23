@@ -10,7 +10,6 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 
 const [pokemon, setPokemon] = useState([])
-const [evolucion, setEvolucion] = useState([]);
 
 const urls = [
     "https://pokeapi.co/api/v2/pokemon/1",
