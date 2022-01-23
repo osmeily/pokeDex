@@ -679,6 +679,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
+.w-4\/6 {
+  width: 66.666667%;
+}
+
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-6\/12 {
+  width: 50%;
+}
+
+.w-3\/12 {
+  width: 25%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1323,6 +1341,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.filter {
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-all {

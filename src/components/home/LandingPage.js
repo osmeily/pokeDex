@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 
 const LandingPage = ({user}) => {
 
-
     return (
     <div>
         <Navbar user={user}/>

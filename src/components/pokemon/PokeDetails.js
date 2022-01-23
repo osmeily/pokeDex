@@ -12,7 +12,7 @@ const PokeDetails = () => {
     const navigate = useNavigate()
 
     const getPokemonId =  useSelector((selectedPokemon => selectedPokemon.pokemon.selectedPokemon))
-
+    console.log();
 
     const ClickedPokemon = () => {
         const url = `https://pokeapi.co/api/v2/pokemon/${getPokemonId}`

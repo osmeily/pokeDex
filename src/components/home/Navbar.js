@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import pokemon from "../../resources/pokeball.png"
 import { useDispatch } from 'react-redux';
 import { actionLogoutAsync } from '../../actions/actionLogin';
 import { SearchPokemon } from '../../actions/actionPokemon';
 
-const Navbar = ({user, name}) => {
+const Navbar = ({user}) => {
 
-    const [searchPokemon, setSearchPokemon] = useState({name});
-
+    const [text, setText] = useState("");
     const dispatch = useDispatch()
 
     const handleLogout = () => {
@@ -16,9 +15,8 @@ const Navbar = ({user, name}) => {
         isLogout()
     }
 
-    const pokeSearch = (name) => {
-        dispatch(SearchPokemon(name))
-        handleOnChange()
+    const handleChange = ({target}) => {
+        setText(target.value)
     }
 
     const [isLogout, setIsLogout] = useState(false);
@@ -26,12 +24,11 @@ const Navbar = ({user, name}) => {
     useEffect(() => {
         setIsLogout(true)
     }, [isLogout]);
-    
-    const handleOnChange = (e) => {
-        setSearchPokemon({
-            ...name,
-            [e.target.name] : e.target.value
-        })
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(SearchPokemon(text))
+        console.log(text);
     }
 
     return (
@@ -42,7 +39,9 @@ const Navbar = ({user, name}) => {
                         <img src={pokemon} style={{width: "60px"}} alt=""/>
                         <h2>PokeApp</h2>
                     </Link>
-                    <input name='name' value={name} onClick={()=>pokeSearch()} className='mb-5 mt-5 p-2 border-black-500 border-2 w-2/5' placeholder='Busca tu Pokemon'/>
+                    <form className='w-3/12' onSubmit={handleSubmit}>
+                    <input name='name' value={text} onChange={handleChange} className='mb-5 mt-5 p-2 border-black-500 border-2 w-full' placeholder='Busca tu Pokemon'/>
+                    </form>
                     <ul className="text-white sm:self-center text-xl border-t sm:border-none">
                         <li className="sm:inline-block">
                         <Link to={"/login"} className="p-3 hover:text-rose-200">{user ? "Hola, "+user : "Login"}</Link>
