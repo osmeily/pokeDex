@@ -31,6 +31,7 @@ const PokeDetails = () => {
 
     useEffect(() => {
         ClickedPokemon()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
 
